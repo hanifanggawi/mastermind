@@ -4,6 +4,7 @@
     import InputModal from "./InputModal.svelte";
 
     let selectedColor = Colors.Blank
+
     let open = false
     function setOpen(state: boolean) {
         open = state
@@ -12,8 +13,9 @@
 
 <div class="color-input">
     <ColorBox color={selectedColor} on:click={() => setOpen(!open)}/>
+    <input type="text" bind:value={selectedColor} name="color">
     {#if open}
-        <div on:blur={() => setOpen(false)}>
+        <div>
             <InputModal bind:selectedColor bind:open/>
         </div>
     {/if}
@@ -23,5 +25,9 @@
 <style>
     .color-input {
         position: relative;
+    }
+
+    input {
+        display: none;
     }
 </style>

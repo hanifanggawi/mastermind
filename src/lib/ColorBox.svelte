@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Colors } from "../game/constants";
 
-  export let size = 2
+  export let size = 1.7
   export let color: Colors
 </script>
 

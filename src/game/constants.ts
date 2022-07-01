@@ -7,3 +7,12 @@ export enum Colors {
     White = '#FAFAFA',
     Blank = '#1C1C26'
 }
+
+export type Colorset = Colors[]
+
+export type Guess = {
+  colorset: Colorset,
+  blackPegs: number
+  whitePegs: number
+}
+

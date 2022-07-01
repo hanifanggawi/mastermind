@@ -34,7 +34,7 @@
         position: absolute;
         box-shadow: 0px 0px 15px 5px rgba(29, 29, 29, 0.25);
         left: -4.5em;
-        bottom: 5em;
+        top: 4.5em;
     }
 
     input {
