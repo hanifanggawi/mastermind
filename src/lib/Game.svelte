@@ -17,7 +17,7 @@
 <div class="game-box">
   <div class="guesses">
     {#each $guesses as guess}
-      <ColorSet colors={guess.colorset} />
+      <ColorSet colors={guess.colorset} pegs={guess.pegs} />
     {/each}
     {#key $guesses.length}
       <ColorsetInputs />

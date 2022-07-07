@@ -3,7 +3,7 @@
     import ColorBox from "./ColorBox.svelte"
     import InputModal from "./InputModal.svelte";
 
-    let selectedColor = Colors.Blank
+    let selectedColor: Colors
 
     let open = false
     function setOpen(state: boolean) {
@@ -12,7 +12,7 @@
 </script>
 
 <div class="color-input">
-    <ColorBox color={selectedColor} on:click={() => setOpen(!open)}/>
+    <ColorBox color={selectedColor || Colors.Input} on:click={() => setOpen(!open)}/>
     <input type="text" bind:value={selectedColor} name="color">
     {#if open}
         <div>
@@ -25,6 +25,7 @@
 <style>
     .color-input {
         position: relative;
+        cursor: pointer;
     }
 
     input {

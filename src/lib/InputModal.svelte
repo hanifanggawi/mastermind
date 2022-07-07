@@ -11,7 +11,7 @@
         }, 1)
     }
 
-    const selectionColors = Object.values(Colors).slice(0,-1)
+    const selectionColors = Object.values(Colors).slice(0,6)
 </script>
 
 <div class="input-modal" tabindex="0">

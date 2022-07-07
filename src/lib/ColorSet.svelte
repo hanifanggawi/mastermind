@@ -1,14 +1,19 @@
 <script lang="ts">
-    import type { Colors } from "../game/constants";
+    import type { Colors, Peg } from "../game/constants";
     import ColorBox from "./ColorBox.svelte";
+    import PegBox from "./PegBox.svelte";
 
     export let colors: Colors[]
+    export let pegs: Peg[] = undefined
 </script>
 
 <div class="colorset">
     {#each colors as color}
         <ColorBox color={color}/>
     {/each}
+    {#if pegs}
+        <PegBox pegs={pegs}/>
+    {/if}
 </div>
 
 <style>
