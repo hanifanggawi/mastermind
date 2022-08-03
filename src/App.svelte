@@ -1,9 +1,15 @@
 <script lang="ts">
+  import { GameState } from './game/constants';
+  import AlertBox from './lib/AlertBox.svelte';
   import Game from './lib/Game.svelte'
+  import { gameState } from './store';
 </script>
 
 <main>
   <Game/>
+  {#if $gameState !== GameState.Playing}
+    <AlertBox state={$gameState}/>
+  {/if}
 </main>
 
 <style>

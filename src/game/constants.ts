@@ -15,6 +15,12 @@ export enum Peg {
   Empty = 'empty'
 }
 
+export enum GameState {
+  Playing,
+  Win,
+  Lost
+}
+
 export type Colorset = Colors[]
 
 export type Guess = {

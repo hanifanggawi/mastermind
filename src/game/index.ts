@@ -1,9 +1,10 @@
-import { Colors, Colorset, Peg, PegScore } from "./constants"
+import { gameState } from "../store"
+import { Colors, Colorset, GameState, Peg, PegScore } from "./constants"
 
 export function generateAnswerSet(): Colors[] {
   const answerSet = []
   
-  const enumArray = Object.values(Colors).slice(0,-1)
+  const enumArray = Object.values(Colors).slice(0,5)
   for (let i = 0; i < 4; i++) {
     const index = Math.floor(Math.random() * enumArray.length)
     answerSet.push(enumArray[index])
@@ -17,37 +18,44 @@ export function calculatePegs(guess: Colorset, answer: Colorset): Peg[] {
   return generatePegs(score)
 }
 
-function calculateScore(guess: Colorset, answer: Colorset): PegScore {
-  const guessSet = new Set<Colors>()
-  const answerSet = new Set<Colors>(answer)
-
+export function calculateScore(guess: Colorset, answer: Colorset): PegScore {
   let blackPegs = 0
   let whitePegs = 0
+
+  const guessCopy = []
+  const answerCopy = []
 
   for (let i = 0; i < answer.length; i++) {
     if (guess[i] === answer[i]) {
       blackPegs++
-      answerSet.delete(guess[i])
     } else {
-      guessSet.add(guess[i])
+      guessCopy.push(guess[i])
+      answerCopy.push(answer[i])
     }
   }
-  for (const color of answerSet) {
-    if (guessSet.has(color)) {
-      whitePegs++
+
+  if (blackPegs === answer.length) {
+    gameState.set(GameState.Win)
+  }
+
+  for (let i = 0; i < answerCopy.length; i++) {
+    for (let j = 0; j < answerCopy.length; j++) {
+      if (guessCopy[i] === answerCopy[j]) {
+        whitePegs++
+        break
+      }
     }
   }
+
   return {
     black: blackPegs,
     white: whitePegs
   }
 }
 
-function generatePegs(pegScore: PegScore) {
+export function generatePegs(pegScore: PegScore) {
   const pegList: Peg[] = []
-  console.log('DISINI pegscore', pegScore)
   for (let i = 0; i<pegScore.black; i++) {
-    console.log('DISINI ke run', i , Peg.Black)
     pegList.push(Peg.Black)
   }
   for (let i = 0; i<pegScore.white; i++) {
@@ -56,6 +64,14 @@ function generatePegs(pegScore: PegScore) {
   for (let i = 0; i<4 - (pegScore.black + pegScore.white); i++) {
     pegList.push(Peg.Empty)
   }
-  console.log('DISINI pegList', pegList)
   return pegList
+}
+
+export function getAlertMessage(gameState: GameState) {
+  switch (gameState) {
+    case GameState.Win:
+      return 'You Win'
+    case GameState.Lost:
+      return 'You Lost'
+  }
 }

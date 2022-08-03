@@ -1,26 +1,31 @@
 <script lang="ts">
 import { get } from "svelte/store";
 
-import { calculatePegs } from "../game";
-import type { Guess, Peg } from "../game/constants";
+import { calculateScore, generatePegs } from "../game";
+import { GameState, Guess, Peg } from "../game/constants";
 
-  import { guesses, answerSet } from "../store";
+  import { guesses, answerSet, gameState } from "../store";
   import ColorInput from "./ColorInput.svelte";
 
   function handleSubmit(e: Event) {
     const formData = new FormData(e.target as HTMLFormElement)
     const guessSet = []
+    const answer = get(answerSet)
     for (let field of formData) {
       guessSet.push(field[1])
     }
-    const pegs: Peg[] = calculatePegs(guessSet, get(answerSet))
+    const score = calculateScore(guessSet, answer)
+    const pegs: Peg[] = generatePegs(score)
     const newGuess: Guess = {
       colorset: guessSet,
       pegs: pegs
     }
-    console.log(newGuess)
     guesses.update(n => [...n, newGuess])
-    console.log(newGuess)
+    if (score.black === answer.length) {
+      gameState.set(GameState.Win)
+    } else if (get(guesses).length >= 7) {
+      gameState.set(GameState.Lost)
+    }    
   }
 </script>
 

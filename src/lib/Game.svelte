@@ -1,17 +1,11 @@
 <script lang="ts">
-  import { Colors } from "../game/constants";
+  import { Colors, GameState } from "../game/constants";
   import ColorSet from "./ColorSet.svelte";
   import ColorsetInputs from "./ColorsetInputs.svelte";
-  import { guesses, answerSet } from "../store"
-  import { get } from 'svelte/store'
+  import { guesses, answerSet, gameState } from "../store"
+  import { get } from "svelte/store";
 
-  const emptyColorset = [
-    Colors.Blank,
-    Colors.Blank,
-    Colors.Blank,
-    Colors.Blank,
-  ];
-
+  const emptyColorset: Colors[] = Array(4).fill(Colors.Blank)
 </script>
 
 <div class="game-box">
@@ -20,14 +14,22 @@
       <ColorSet colors={guess.colorset} pegs={guess.pegs} />
     {/each}
     {#key $guesses.length}
-      <ColorsetInputs />
+      {#if $gameState === GameState.Playing}
+        <ColorsetInputs />
+      {:else if $gameState === GameState.Win}
+        <ColorSet colors={emptyColorset} />
+      {/if}
     {/key}
     {#each {length: 7 - ($guesses.length +1)} as _}
       <ColorSet colors={emptyColorset} />
     {/each}
   </div>
   <div class="colorset-answer">
-    <ColorSet colors={get(answerSet)} />
+    {#if $gameState === GameState.Playing}
+      <ColorSet colors={emptyColorset} />
+    {:else}
+       <ColorSet colors={get(answerSet)} />
+    {/if}
   </div>
 </div>
 
@@ -43,13 +45,14 @@
 
   .colorset-answer {
     padding: 1em;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
   }
 
   .guesses {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* justify-content: center; */
     row-gap: 1em;
     grid-area: guesses;
     padding: 1em;
