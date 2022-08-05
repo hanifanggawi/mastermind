@@ -1,4 +1,11 @@
+import { answerSet, gameState, guesses } from "../store"
 import { Colors, Colorset, GameState, Peg, PegScore } from "./constants"
+
+export function restartGame() {
+  gameState.set(GameState.Playing)
+  guesses.set([])
+  answerSet.set(generateAnswerSet())
+}
 
 export function generateAnswerSet(): Colors[] {
   const answerSet = []

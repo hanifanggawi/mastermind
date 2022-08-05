@@ -6,7 +6,6 @@
   import { get } from "svelte/store";
 
   const emptyColorset: Colors[] = Array(4).fill(Colors.Blank)
-  const colorsets: ColorSet[] = []
 </script>
 
 <div class="game-box">
@@ -27,8 +26,7 @@
   </div>
   <div class="colorset-answer">
     {#if $gameState === GameState.Playing}
-      <!-- <ColorSet colors={emptyColorset} /> -->
-      <ColorSet colors={get(answerSet)} />
+      <ColorSet colors={emptyColorset} />
     {:else}
        <ColorSet colors={get(answerSet)} />
     {/if}

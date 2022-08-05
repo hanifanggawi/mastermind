@@ -2,7 +2,7 @@
 </script>
 
 <div class="sidebar">
-  <h1>MasterMind</h1>
+  <h1>Master<span class="orange">Mind</span> </h1>
   <div class="instructions">
     <h4>How To Play</h4>
     <p>
@@ -15,13 +15,13 @@
         Select colors by clicking on the empty tile and then press <b>Check</b>  to place your guess
       </li>
       <li> 
-        After each guess, your guess will be evaluated using a number black and white pegs.
+        After each guess, your guess will be evaluated using a number orange and white pegs.
       </li>
       <li>
-        1 Black peg means 1 tile has the same color and position with the solution
+        1 <b class="orange">Orange</b> peg means 1 tile has the same color and position with the solution
       </li>
       <li>
-        1 White Peg means 1 tile has the same color with the solution
+        1 <b>White</b>  Peg means 1 tile has the same color with the solution
       </li>
       <li>
         Try to find the combination with as few guesses as possible
@@ -38,6 +38,10 @@
     place-items: center;
     padding: 1.5em ;
     color: #FFFFFF;
+  }
+
+  .orange {
+    color: #fe9d28
   }
 
   ul {
