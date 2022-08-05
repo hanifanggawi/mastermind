@@ -13,37 +13,33 @@
 
 <style>
   .peg-box {
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap; */
     display: grid;
     grid-template-columns: min-content min-content;
-    row-gap: 0.5em;
     height: 100%;
-    /* aspect-ratio: 1/1; */
     box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    background: #B6EBF0;
-    /* width: 4em; */
+    background: #1d1d34;
+    place-items: center;
+    gap: 0.2em;
+    padding: 0.5em;
   }
 
   .peg {
     border-radius: 999px;
-    padding: 0.5em;
-    margin-right: 0.5em;
-    max-width: 0.5em;
+    width: .95em;
+    height: .95em;
     display: flex;
   }
 
-  .peg.black {
-    background: #000000
+  .peg.orange {
+    background: radial-gradient(circle at 50% 40%, #fe9d28, rgb(235, 129, 15) 66%, #271b4d 100%);
   }
 
   .peg.white {
-    background: #FFFFFF;
+    background: radial-gradient(circle at 50% 40%, #ffffff, #d8d8dc 66%, #271b4d 100%);
   }
 
   .peg.empty {
-    background: #777777;
+    background: radial-gradient(circle at 45% 100%, #11111a, #11111a 66%, rgb(0, 0, 0) 100%);
   }
 </style>
