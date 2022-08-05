@@ -2,11 +2,13 @@
   import { GameState } from './game/constants';
   import AlertBox from './lib/AlertBox.svelte';
   import Game from './lib/Game.svelte'
+  import Sidebar from './lib/Sidebar.svelte';
   import { gameState } from './store';
 </script>
 
 <main>
   <Game/>
+  <Sidebar/>
   {#if $gameState !== GameState.Playing}
     <AlertBox state={$gameState}/>
   {/if}
@@ -32,9 +34,11 @@
   
   main {
     display: grid;
+    grid-template-columns: min-content 50vh;
     justify-content: center;
     align-items: center;
     background: hsla(240, 16%, 13%, 1);
     height: 100vh;
+    padding: 1em 10vw;
   }
 </style>
