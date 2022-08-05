@@ -1,4 +1,3 @@
-import { gameState } from "../store"
 import { Colors, Colorset, GameState, Peg, PegScore } from "./constants"
 
 export function generateAnswerSet(): Colors[] {
@@ -19,7 +18,7 @@ export function calculatePegs(guess: Colorset, answer: Colorset): Peg[] {
 }
 
 export function calculateScore(guess: Colorset, answer: Colorset): PegScore {
-  let blackPegs = 0
+  let orangePegs = 0
   let whitePegs = 0
 
   const guessCopy = []
@@ -27,41 +26,38 @@ export function calculateScore(guess: Colorset, answer: Colorset): PegScore {
 
   for (let i = 0; i < answer.length; i++) {
     if (guess[i] === answer[i]) {
-      blackPegs++
+      orangePegs++
     } else {
       guessCopy.push(guess[i])
       answerCopy.push(answer[i])
     }
   }
 
-  if (blackPegs === answer.length) {
-    gameState.set(GameState.Win)
-  }
-
   for (let i = 0; i < answerCopy.length; i++) {
     for (let j = 0; j < answerCopy.length; j++) {
       if (guessCopy[i] === answerCopy[j]) {
         whitePegs++
+        answerCopy[j] = null
         break
       }
     }
   }
 
   return {
-    black: blackPegs,
+    orange: orangePegs,
     white: whitePegs
   }
 }
 
 export function generatePegs(pegScore: PegScore) {
   const pegList: Peg[] = []
-  for (let i = 0; i<pegScore.black; i++) {
-    pegList.push(Peg.Black)
+  for (let i = 0; i<pegScore.orange; i++) {
+    pegList.push(Peg.Orange)
   }
   for (let i = 0; i<pegScore.white; i++) {
     pegList.push(Peg.White)
   }
-  for (let i = 0; i<4 - (pegScore.black + pegScore.white); i++) {
+  for (let i = 0; i<4 - (pegScore.orange + pegScore.white); i++) {
     pegList.push(Peg.Empty)
   }
   return pegList

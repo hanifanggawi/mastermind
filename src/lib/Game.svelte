@@ -40,12 +40,13 @@
     align-items: flex-start;
     row-gap: 1em;
     padding: 2em 1em 1em 2em;
-    background-color: hsla(237, 21%, 20%, 1);
+    background-color: rgb(34, 35, 62);
+    height: 100%;
   }
 
   .colorset-answer {
     padding: 1em;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 4px;
   }
 
