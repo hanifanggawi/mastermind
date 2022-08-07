@@ -5,11 +5,14 @@
 
     export let colors: Colors[]
     export let pegs: Peg[] = undefined
+    export let text: string = ''
 </script>
 
 <div class="colorset">
     {#each colors as color}
-        <ColorBox color={color}/>
+        <ColorBox color={color}>
+            {text}
+        </ColorBox>
     {/each}
     {#if pegs}
         <PegBox pegs={pegs}/>

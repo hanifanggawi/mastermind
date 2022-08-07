@@ -26,7 +26,7 @@
   </div>
   <div class="colorset-answer">
     {#if $gameState === GameState.Playing}
-      <ColorSet colors={emptyColorset} />
+      <ColorSet colors={emptyColorset} text='?' />
     {:else}
        <ColorSet colors={get(answerSet)} />
     {/if}
@@ -39,7 +39,7 @@
     flex-direction: column;
     align-items: flex-start;
     row-gap: 1em;
-    padding: 2em 1em 1em 2em;
+    padding: 2em 1em 2em 2em;
     background-color: rgb(34, 35, 62);
     height: 100%;
   }

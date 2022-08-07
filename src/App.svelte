@@ -29,7 +29,8 @@
   :global(body) {
     padding: 0;
     margin: 0;
-    max-height: 100vh;
+    background: hsla(240, 16%, 13%, 1);
+    min-width: 100vh;
   }
   
   main {
@@ -38,7 +39,7 @@
     justify-content: center;
     align-items: center;
     background: hsla(240, 16%, 13%, 1);
-    height: 100vh;
+    height: min-content;
     padding: 1em 10vw;
   }
 </style>

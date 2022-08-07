@@ -7,7 +7,7 @@
   export let state: GameState
   let numGuesses = get(guesses).length
 
-  const alertMessage = getAlertMessage(state)
+  export let alertMessage = getAlertMessage(state)
   let open = true
   function toggleAlertBox() {
     open = !open

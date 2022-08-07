@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Colors } from "../game/constants";
-  export let size = 1.7
+  export let size = 3.4
   export let color: Colors
 </script>
 
@@ -9,13 +9,28 @@
   class:debossed={color === Colors.Input || color === Colors.Blank}
   style="
     background:{color || Colors.Blank};
-    padding: {size}em
+    width: {size}em;
+    height: {size}em;
   "
-/>
+>
+  <span><slot/></span>
+</div>
 
 <style>
   div {
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: default;
+    user-select: none;
+    text-decoration: none;
   }
 
   .debossed {

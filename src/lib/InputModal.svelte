@@ -19,7 +19,7 @@
     {#each selectionColors as color}
         <label>
             <input on:click={closeModal} type="radio" bind:group={selectedColor} name="selectedColor" value={color}>
-            <ColorBox size={1.5} color={color}/>
+            <ColorBox size={2.7} color={color}/>
         </label>
     {/each}
 </div>
@@ -36,6 +36,10 @@
         box-shadow: 0px 0px 15px 5px rgba(29, 29, 29, 0.25);
         left: -4.5em;
         top: 4.5em;
+    }
+
+    label {
+        cursor: pointer;
     }
 
     input {

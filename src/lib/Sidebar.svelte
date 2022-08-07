@@ -5,8 +5,6 @@
   <h1>Master<span class="orange">Mind</span> </h1>
   <div class="instructions">
     <h4>How To Play</h4>
-    <p>
-    </p>
     <ul>
       <li>
         Guess the hidden color combination
@@ -56,5 +54,9 @@
 
   h1, h4{
     text-align: center;
+  }
+
+  h4, ul {
+    margin: 0;
   }
 </style>
