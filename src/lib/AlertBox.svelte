@@ -8,17 +8,28 @@
   let numGuesses = get(guesses).length
 
   const alertMessage = getAlertMessage(state)
+  let open = true
+  function toggleAlertBox() {
+    open = !open
+  } 
 </script>
 
-<div class="modal-box">
-  <div class="alert-box">
-    <h2 class="title">{alertMessage}</h2>
-    <div class="sub-title">Guesses: {numGuesses}</div>
-    <button on:click={restartGame}>
-      Play Again
-    </button>
+{#if open}
+  <div class="modal-box">
+    <div class="alert-box">
+      <h2 class="title">{alertMessage}</h2>
+      <div class="sub-title">Guesses: {numGuesses}</div>
+      <div class="buttons">
+        <button on:click={restartGame}>
+          Play Again
+        </button>
+        <button class="button-dark" on:click={toggleAlertBox}>
+          View Board
+        </button>
+      </div>
+    </div>
   </div>
-</div>
+{/if}
 
 <style>
   .modal-box {
@@ -49,6 +60,11 @@
     margin: 0;
   }
 
+  .buttons {
+    display: flex;
+    column-gap: 1em;
+  }
+
   button {
     padding: 0.7em 1.5em;
     border-radius: 5px;
@@ -61,5 +77,14 @@
 
   button:hover {
     background: #f4f4f4;
+  }
+
+  .button-dark {
+    background: #1b1b1b;
+    color: #f4f4f4;
+  }
+
+  .button-dark:hover {
+    background: #3a3a3a;
   }
 </style>
