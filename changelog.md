@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.1] - 2022-08-07
+### Added
+- Add game result in sidebar
+
 ## [1.0.0] - 2022-08-07
 ### Added
 - Setup Gihhub Pages deployment
