@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Colors } from "../game/constants";
+    import { clickOutside } from "../util/directives";
     import ColorBox from "./ColorBox.svelte";
 
     export let selectedColor: Colors
@@ -14,7 +15,7 @@
     const selectionColors = Object.values(Colors).slice(0,6)
 </script>
 
-<div class="input-modal" tabindex="0">
+<div class="input-modal" tabindex="0" use:clickOutside on:click_outside={closeModal}>
     {#each selectionColors as color}
         <label>
             <input on:click={closeModal} type="radio" bind:group={selectedColor} name="selectedColor" value={color}>
