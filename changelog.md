@@ -1,6 +1,13 @@
 # Changelog
 
-## [0.0.2] - 2022-08-03
+## [1.0.0] - 2022-08-07
+### Added
+- Setup Gihhub Pages deployment
+- Add view board button
+### Changed
+- Add small visual improvements
+
+## [0.0.2] - 2022-08-05
 ### Added
 - Add sidebar with game instructions
 ### Fixed
